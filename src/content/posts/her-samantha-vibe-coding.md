@@ -3,7 +3,7 @@ title: "I Built My Own 'Her' Samantha Over a Weekend. How Vibe Coding Unlocks Yo
 description: "A medical student in Bulgaria spent a weekend building a personal AI assistant inspired by the movie 'Her' — using SwiftUI, Claude API, and Vibe Coding. Here's what happened."
 date: "2026-04-09"
 tags: ["AI", "Vibe Coding", "macOS", "SwiftUI"]
-image: "/images/posts/her-samantha-vibe-coding.png"
+image: "/images/her-samantha-ogp.jpeg"
 ---
 
 # Building an AI Like the One in 'Her' — In My Own Environment
@@ -39,6 +39,8 @@ You describe what you want to Claude or ChatGPT, and it generates and refines th
 From that single sentence, things started taking shape.
 
 It wasn't perfect, but it worked. And that alone was enough to be interesting.
+
+![Samantha's source code in Xcode — AudioService.swift handling voice input and output, with debug logs showing the RAG pipeline and shell command execution in action.](/images/samantha-xcode.png)
 
 ---
 
@@ -93,6 +95,8 @@ This made it possible to:
 - Retrieve system status
 
 Of course, this is something that needs to be handled with care.
+
+![Samantha running in the macOS menu bar — responding to a system query about SSD storage with a detailed, context-aware answer.](/images/samantha-menubar.png)
 
 ---
 
