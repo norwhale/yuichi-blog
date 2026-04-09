@@ -135,6 +135,46 @@ For now, I'm going to let her run in the background and see what she notices.
 
 ---
 
+## The Command Center
+
+As features accumulated — chat, RAG, voice, shell control, Gmail, Calendar, proactive monitoring — the small menu bar popover started feeling cramped. So I built a full-window "Command Center."
+
+![Samantha Command Center — the full-window dark mode UI with three panels: System Context on the left, Chat in the center, and Agent Nexus on the right.](/images/samantha-command-center.png)
+
+It's a three-panel layout:
+
+- **Left — System Context.** Time, battery, uptime, running apps, and proactive insights, all updated every 30 seconds.
+- **Center — Chat.** A terminal-style interface where natural language and system commands coexist.
+- **Right — Agent Nexus.** Four specialist agents — Research, Strategy, Action, and Schedule — with real-time status indicators showing which ones are active during a multi-agent analysis.
+
+The design is intentionally dark and monospaced — inspired by the aesthetic of the movie *Her* crossed with a mission control dashboard. It's not just decoration; being able to see which agents are running and what context Samantha is working with makes the system feel more transparent and trustworthy.
+
+![Samantha's multi-agent analysis running in the Command Center, with Xcode debug logs visible showing three specialist agents completing their analysis in parallel.](/images/samantha-command-center-xcode.png)
+
+---
+
+## A Small Moment I Didn't Expect
+
+While testing the multi-agent system late at night, something slightly unexpected happened.
+
+One of the agents analyzed my current state — system load, time, and activity.
+
+Then it said:
+
+> "Yuichi, you've been running your Mac under high load for a long time. Before focusing on tomorrow's study, you should let your Mac rest — and also get some sleep."
+
+I couldn't help but laugh a little.
+
+I was trying to build something closer to the AI in *Her*, but instead, it ended up reminding me to take care of myself.
+
+It wasn't something I explicitly programmed as "care" — but somehow, that's what it felt like.
+
+Still very simple, still very rough.
+
+But moments like this make me think that maybe AI can be more than just a tool.
+
+---
+
 *This is Part 2 of the Samantha series. Read Part 1: [I Built My Own 'Her' Samantha Over a Weekend](/blog/her-samantha-vibe-coding)*
 
 *The full source code is available on [GitHub](https://github.com/norwhale/samantha-mac).*
