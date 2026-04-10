@@ -175,6 +175,62 @@ But moments like this make me think that maybe AI can be more than just a tool.
 
 ---
 
+## Giving Samantha a Local Brain: Gemma 4 31B
+
+Up to this point, Samantha relied entirely on Claude's cloud API. Every question, every analysis, every proactive check — all sent over the internet. It worked well, but it meant Samantha couldn't think without a connection, and every thought cost money.
+
+So I gave her a local brain.
+
+Google's Gemma 4 31B, running through Ollama on my M3 Max with 128GB of unified memory. Nineteen gigabytes of model weights, loaded entirely on the machine. No cloud. No API calls. No data leaving my desk.
+
+The architecture changed:
+
+- **Gemma 4 31B** became the orchestrator — the commander who decides how to approach each request
+- **Claude Haiku** became a specialist agent, called when tools like Gmail, Calendar, or shell commands are needed
+- If Ollama isn't running, Samantha falls back to Claude-only mode automatically
+
+One brain for strategy. Another for execution. Working together.
+
+---
+
+## The Benchmark
+
+I wanted to know: does adding a local model actually help? Or is it just slower?
+
+I built a benchmark suite that tests 7 categories — simple greetings, factual questions, coding, medical knowledge, multi-perspective analysis, creative writing, and logical reasoning — across three modes:
+
+1. **Claude Haiku** (cloud, solo)
+2. **Gemma 4 31B** (local, solo)
+3. **Orchestrated** (Gemma as commander + Claude as specialist)
+
+![Response latency comparison across 7 task categories — Claude Haiku averages 2.7 seconds, Gemma 4 31B averages 25.8 seconds, Orchestrated averages 26.8 seconds.](/images/samantha-bench-latency.png)
+
+**Latency**: Claude wins by 10x. That's the advantage of a cloud API optimized for speed. But Gemma runs at a steady 16.3 tokens per second on M3 Max — completely offline, with zero API cost and no data leaving the machine.
+
+![Quality score comparison — Claude averages 8.3/10, Gemma averages 7.6/10, with Gemma matching Claude at 8/10 on Technical, Medical, and Reasoning tasks.](/images/samantha-bench-quality.png)
+
+**Quality**: Claude scores 8.3/10 on average versus Gemma's 7.6/10. But look closer — on Technical, Medical, and Reasoning tasks, Gemma hits 8/10 across the board. The gap shows mostly in simple and creative tasks.
+
+For a 31-billion parameter model running on a laptop, that's remarkably competitive.
+
+![Radar chart showing overall comparison — Claude excels at speed, Gemma at privacy and independence, Orchestrated combines strengths of both.](/images/samantha-bench-radar.png)
+
+The radar chart tells the real story. Claude is fast but cloud-dependent. Gemma is private but slower. The orchestrated mode combines the strengths of both — Gemma decides the approach, Claude handles the tool-heavy execution.
+
+---
+
+## What This Means
+
+The numbers confirmed something I suspected: a single model isn't the answer. A *system* of models is.
+
+Gemma handles direct conversations and strategic decisions locally — fast enough for background analysis, private enough for sensitive context. Claude handles the tasks that need tools, integrations, and speed.
+
+Together, they cover each other's weaknesses.
+
+And the cost structure changes dramatically. Every question Gemma answers locally is a question that doesn't cost API tokens. For proactive checks running every five minutes, that adds up.
+
+---
+
 *This is Part 2 of the Samantha series. Read Part 1: [I Built My Own 'Her' Samantha Over a Weekend](/blog/her-samantha-vibe-coding)*
 
 *The full source code is available on [GitHub](https://github.com/norwhale/samantha-mac).*
