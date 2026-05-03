@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="Action potential waveform">
+  <rect width="600" height="340" fill="#0a0a0a"/>
+  <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
+    <line x1="60" y1="40" x2="60" y2="300"/>
+    <line x1="60" y1="300" x2="560" y2="300"/>
+    <line x1="60" y1="90" x2="560" y2="90" stroke-dasharray="4 6"/>
+    <line x1="60" y1="200" x2="560" y2="200" stroke-dasharray="4 6"/>
+    <line x1="60" y1="260" x2="560" y2="260" stroke-dasharray="4 6"/>
+  </g>
+  <g font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="50" y="94" text-anchor="end">+40 mV</text>
+    <text x="50" y="204" text-anchor="end">−55 mV</text>
+    <text x="50" y="264" text-anchor="end">−70 mV</text>
+    <text x="300" y="325" text-anchor="middle">Time (ms)</text>
+  </g>
+  <path d="M60 260 L180 260 L230 255 L260 240 L285 110 L310 95 L340 95 L380 140 L420 260 L450 285 L490 270 L560 260"
+        fill="none" stroke="#06B6D4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="Inter, sans-serif" font-size="12" fill="#f8fafc">
+    <text x="215" y="245">① Resting</text>
+    <text x="245" y="220">② Threshold</text>
+    <text x="295" y="80" text-anchor="middle">③ Depolarization</text>
+    <text x="400" y="200" text-anchor="middle">④ Repolarization</text>
+    <text x="470" y="300">⑤ Hyperpolarization</text>
+  </g>
+  <g fill="#f59e0b">
+    <circle cx="260" cy="240" r="4"/>
+    <circle cx="310" cy="95" r="4"/>
+    <circle cx="450" cy="285" r="4"/>
+  </g>
+</svg>
