@@ -54,6 +54,24 @@ Vary the cognitive demand as well (e.g. definition → application → compariso
 `
     : "";
 
+  // When the session is English-only we still attach a Japanese translation
+  // for the student's on-demand "🌐 日本語" toggle. This keeps the practice
+  // surface in English (the actual goal of the preparatory course) while
+  // giving them a safety net when language — not chemistry — is what's
+  // blocking them.
+  const wantsTranslation = language === "en";
+  const translationField = wantsTranslation
+    ? `,
+  "translation": {
+    "question": "問題文の自然な日本語訳",
+    "options": ${questionType === "multiple_choice" ? '["A) 選択肢の和訳", "B) ...", "C) ...", "D) ..."]' : "null"},
+    "hint": "ヒントの和訳"
+  }`
+    : "";
+  const translationInstruction = wantsTranslation
+    ? `\n- ALSO include a "translation" field with a natural Japanese rendering of the question, options, and hint. The translation must preserve meaning — not be a literal word-by-word swap. Keep scientific terms in their standard Japanese form (e.g. "共有結合", "電子").`
+    : "";
+
   const user = `Generate a ${difficulty} level ${questionType.replace("_", " ")} question about "${topic}" in the subject "${subject}".
 
 ${typeInstruction}
@@ -61,7 +79,7 @@ ${typeInstruction}
 ${previouslyAsked}Keep the question concise:
 - Question stem: ideally 1-2 sentences
 - Options: short phrases, not paragraphs
-- Hint: 1 short sentence
+- Hint: 1 short sentence${translationInstruction}
 
 IMPORTANT: Respond ONLY with valid JSON, no markdown fences. Use this exact format:
 {
@@ -70,7 +88,7 @@ IMPORTANT: Respond ONLY with valid JSON, no markdown fences. Use this exact form
   "options": ${questionType === "multiple_choice" ? '["A) ...", "B) ...", "C) ...", "D) ..."]' : "null"},
   "correctAnswer": "The correct answer",
   "hint": "A subtle hint without giving away the answer",
-  "difficulty": "${difficulty}"
+  "difficulty": "${difficulty}"${translationField}
 }`;
 
   return { system, user };
@@ -85,10 +103,17 @@ export function buildExplanationPrompt(
   isCorrect: boolean,
   language: Language,
 ) {
+  // In English-only mode we still tag a concise Japanese summary at the
+  // bottom of the explanation. This is the "B" half of the A+B language
+  // helper (per-question toggle + post-answer JP). The English block is the
+  // primary teaching surface; the JP block is a comprehension safety net so
+  // the student can confirm they understood the concept, not just the words.
   const langInstruction =
-    language === "ja" ? "Respond entirely in Japanese." :
-    language === "en" ? "Respond entirely in English." :
-    "Respond bilingually — Japanese first, then English translation.";
+    language === "ja"
+      ? "Respond entirely in Japanese."
+      : language === "en"
+        ? `Respond primarily in English. After the English explanation, on a new line, output exactly:\n\n## 和訳 (Translation)\n\n…and follow it with a 2-3 sentence natural Japanese summary of the SAME explanation (do not add new information). Keep scientific terms in standard Japanese form (e.g. 共有結合, 電子).`
+        : "Respond bilingually — Japanese first, then English translation.";
 
   const scopeGuardrail = `
 CRITICAL — ANSWER LEAK PREVENTION:

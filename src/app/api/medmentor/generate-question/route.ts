@@ -158,8 +158,10 @@ export async function POST(request: Request) {
     );
 
     const stream = await client.messages.stream({
+      // English mode now includes a Japanese translation block, so give the
+      // model enough headroom for both copies of the question.
       model: QUESTION_MODEL,
-      max_tokens: 512,
+      max_tokens: language === "en" ? 900 : 512,
       system,
       messages: [{ role: "user", content: user }],
     });
@@ -177,6 +179,9 @@ export async function POST(request: Request) {
     question.id = `q_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
     question.source = "ai";
     question.acceptedAnswers = question.acceptedAnswers ?? null;
+    // Translation is optional — normalize undefined to null so the client
+    // doesn't have to distinguish "not requested" from "model dropped it".
+    question.translation = question.translation ?? null;
 
     return Response.json(question, {
       headers: {

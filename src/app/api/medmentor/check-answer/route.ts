@@ -135,8 +135,10 @@ export async function POST(request: Request) {
     );
 
     const stream = await client.messages.stream({
+      // English mode appends a "## 和訳" Japanese summary, so give the model
+      // enough budget to finish both blocks without truncating the JP tail.
       model: EXPLANATION_MODEL,
-      max_tokens: 320,
+      max_tokens: effectiveLanguage === "en" ? 700 : 480,
       system,
       messages: [{ role: "user", content: user }],
     });

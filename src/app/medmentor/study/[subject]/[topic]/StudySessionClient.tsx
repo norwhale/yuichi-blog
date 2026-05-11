@@ -75,6 +75,9 @@ export default function StudySessionClient({
   const [isExplaining, setIsExplaining] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [startTime] = useState(Date.now());
+  // Per-question "Show Japanese" toggle. Reset whenever a new question loads
+  // so each question starts in the language-learning-first state.
+  const [showJapanese, setShowJapanese] = useState(false);
 
   // Keep the latest sessionQuestions accessible inside fetchQuestion without
   // making it a useCallback dependency (which would cause re-renders + refetch loops).
@@ -109,6 +112,7 @@ export default function StudySessionClient({
       setExplanation("");
       setExplanationNote("");
       setExplanationSource(null);
+      setShowJapanese(false);
 
       try {
         // Collect the stems of questions already asked THIS SESSION so the
@@ -502,11 +506,32 @@ export default function StudySessionClient({
                       AI GENERATED
                     </span>
                   )}
+                  {/* "Show Japanese" toggle — only when session is EN-only and
+                       the model attached a translation block. */}
+                  {language === "en" && currentQuestion.translation ? (
+                    <button
+                      onClick={() => setShowJapanese((v) => !v)}
+                      className={`ml-auto text-xs font-mono px-2.5 py-1 rounded-full border transition-all ${
+                        showJapanese
+                          ? "bg-cyan-400/15 border-cyan-400/40 text-cyan-200"
+                          : "bg-white/[0.04] border-white/[0.1] text-white/50 hover:bg-white/[0.08] hover:text-white/80"
+                      }`}
+                      aria-pressed={showJapanese}
+                      title="Toggle Japanese translation"
+                    >
+                      🌐 {showJapanese ? "English only" : "日本語で見る"}
+                    </button>
+                  ) : null}
                 </div>
 
                 <p className="text-lg font-medium text-white/90 leading-relaxed">
                   {currentQuestion.question}
                 </p>
+                {showJapanese && currentQuestion.translation?.question ? (
+                  <p className="mt-2 text-sm text-cyan-100/80 leading-relaxed border-l-2 border-cyan-400/30 pl-3">
+                    {currentQuestion.translation.question}
+                  </p>
+                ) : null}
 
                 {currentQuestion.note ? (
                   <div className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/8 px-4 py-3 text-xs text-amber-100/80 leading-relaxed">
@@ -515,9 +540,16 @@ export default function StudySessionClient({
                 ) : null}
 
                 {currentQuestion.hint && !isAnswered && (
-                  <p className="text-xs text-white/20 mt-4 font-mono">
-                    💡 Hint: {currentQuestion.hint}
-                  </p>
+                  <>
+                    <p className="text-xs text-white/20 mt-4 font-mono">
+                      💡 Hint: {currentQuestion.hint}
+                    </p>
+                    {showJapanese && currentQuestion.translation?.hint ? (
+                      <p className="text-xs text-cyan-100/60 mt-1 font-mono pl-5">
+                        💡 ヒント: {currentQuestion.translation.hint}
+                      </p>
+                    ) : null}
+                  </>
                 )}
               </div>
 
@@ -525,20 +557,29 @@ export default function StudySessionClient({
                 <div className="space-y-3 mb-6">
                   {currentQuestion.type === "multiple_choice" && currentQuestion.options ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {currentQuestion.options.map((opt, i) => (
-                        <button
-                          key={i}
-                          onClick={() => setSelectedAnswer(opt)}
-                          className={`p-4 rounded-xl text-left text-sm border transition-all duration-300 ${
-                            selectedAnswer === opt
-                              ? "border-cyan-400/50 bg-cyan-400/10 text-white"
-                              : "border-white/[0.06] bg-white/[0.02] text-white/60 hover:border-white/[0.15] hover:bg-white/[0.04]"
-                          }`}
-                        >
-                          <span className="font-mono text-xs text-white/30 mr-2">{i + 1}</span>
-                          {opt}
-                        </button>
-                      ))}
+                      {currentQuestion.options.map((opt, i) => {
+                        const jpOpt =
+                          showJapanese && currentQuestion.translation?.options?.[i];
+                        return (
+                          <button
+                            key={i}
+                            onClick={() => setSelectedAnswer(opt)}
+                            className={`p-4 rounded-xl text-left text-sm border transition-all duration-300 ${
+                              selectedAnswer === opt
+                                ? "border-cyan-400/50 bg-cyan-400/10 text-white"
+                                : "border-white/[0.06] bg-white/[0.02] text-white/60 hover:border-white/[0.15] hover:bg-white/[0.04]"
+                            }`}
+                          >
+                            <span className="font-mono text-xs text-white/30 mr-2">{i + 1}</span>
+                            {opt}
+                            {jpOpt ? (
+                              <span className="block mt-1 text-[11px] text-cyan-100/60 pl-5">
+                                {jpOpt}
+                              </span>
+                            ) : null}
+                          </button>
+                        );
+                      })}
                     </div>
                   ) : currentQuestion.type === "true_false" ? (
                     <div className="grid grid-cols-2 gap-3">

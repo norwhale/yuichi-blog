@@ -20,6 +20,12 @@ export interface Subject {
   topics: Topic[];
 }
 
+export interface QuestionTranslation {
+  question: string;
+  options: string[] | null;
+  hint: string;
+}
+
 export interface GeneratedQuestion {
   id: string;
   question: string;
@@ -32,6 +38,10 @@ export interface GeneratedQuestion {
   teachingPoint?: string;
   source?: "ai" | "fallback";
   note?: string;
+  // Optional Japanese translation, attached only when the session language
+  // is "en". Powers the per-question "🌐 日本語" toggle so students can
+  // self-check their English comprehension on demand.
+  translation?: QuestionTranslation | null;
 }
 
 export interface AnsweredQuestion extends GeneratedQuestion {
