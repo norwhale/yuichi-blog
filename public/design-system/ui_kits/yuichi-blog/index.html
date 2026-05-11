@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>yuichi.blog — UI Kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  html,body{margin:0;padding:0;background:#F8FAFC}
+  body{font-family:var(--yb-font-sans);color:#0F172A}
+  a{text-decoration:none}
+  button{font-family:inherit}
+</style>
+</head>
+<body class="yb">
+<div id="root"></div>
+
+<script type="text/babel" src="./Navbar.jsx"></script>
+<script type="text/babel" src="./Hero.jsx"></script>
+<script type="text/babel" src="./ArticleCard.jsx"></script>
+<script type="text/babel" src="./Logbook.jsx"></script>
+<script type="text/babel" src="./ArticleView.jsx"></script>
+<script type="text/babel" src="./FloatingChrome.jsx"></script>
+<script type="text/babel" src="./Footer.jsx"></script>
+
+<script type="text/babel">
+const ARTICLES = [
+  { slug: 'her-samantha', date: '2026.04.09', read: 6, tag: 'AI',
+    title: "I Built My Own 'Her' Samantha Over a Weekend",
+    description: "A weekend in Pleven with SwiftUI, Claude API, and Vibe Coding — building a personal AI that lives in my menu bar.",
+    bg: 'linear-gradient(135deg,#0F172A 0%,#1E3A8A 100%)' },
+  { slug: 'samantha-proactive', date: '2026.04.09', read: 9, tag: 'AI',
+    title: "Teaching Samantha to Think Ahead",
+    description: "From reactive chat to proactive companion — a background loop that notices when something shifts.",
+    bg: 'linear-gradient(135deg,#06B6D4 0%,#0F172A 100%)' },
+  { slug: 'gemma-local-brain', date: '2026.03.28', read: 7, tag: 'AI',
+    title: "Giving Samantha a Local Brain: Gemma 4 31B",
+    description: "One brain for strategy. Another for execution. Notes on running a 31B model entirely on a laptop.",
+    bg: 'linear-gradient(135deg,#1E3A8A 0%,#A855F7 100%)' },
+  { slug: 'social-debt', date: '2026.03.22', read: 4, tag: 'Life Abroad',
+    title: "Social Debt",
+    description: "What 'technical debt' taught me about living abroad. An engineering metaphor for a quiet life problem.",
+    bg: 'linear-gradient(135deg,#F97316 0%,#0F172A 100%)' },
+  { slug: 'bci-foundations', date: '2026.03.10', read: 11, tag: 'BCI',
+    title: "Foundations of Brain–Computer Interfaces",
+    description: "Where signal processing, neuroscience, and medical ethics meet. A student's notes.",
+    bg: 'linear-gradient(135deg,#A855F7 0%,#1E3A8A 100%)' },
+  { slug: 'anatomy-flashcards', date: '2026.02.26', read: 5, tag: 'Medicine',
+    title: "Building Anatomy Flashcards with Claude Code",
+    description: "Vibe coding meets medical school. 400 cards, one evening, a lot of anki imports.",
+    bg: 'linear-gradient(135deg,#22C55E 0%,#0F172A 100%)' },
+  { slug: 'pleven-winter', date: '2026.02.14', read: 3, tag: 'Life Abroad',
+    title: "A Quiet Winter in Pleven",
+    description: "Notes on grocery stores, anatomy textbooks in Bulgarian, and the weight of a language barrier.",
+    bg: 'linear-gradient(135deg,#64748B 0%,#0F172A 100%)' },
+  { slug: 'claude-code-review', date: '2026.02.02', read: 6, tag: 'Vibe Coding',
+    title: "Six Months of Claude Code",
+    description: "Where it shines, where it stumbles, and why I keep coming back anyway.",
+    bg: 'linear-gradient(135deg,#06B6D4 0%,#1E3A8A 100%)' },
+  { slug: 'reverse-engineering', date: '2026.01.21', read: 8, tag: 'Medicine',
+    title: "Reverse Engineering the Human Body",
+    description: "Why I left software to study medicine at 33. The tagline, the thesis, the plan.",
+    bg: 'linear-gradient(135deg,#3B82F6 0%,#0F172A 100%)' },
+];
+
+const App = () => {
+  const [view, setView] = React.useState('home'); // 'home' | 'article'
+  const [article, setArticle] = React.useState(null);
+
+  const openArticle = (a) => {
+    setArticle(a);
+    setView('article');
+    window.scrollTo(0, 0);
+  };
+  const goHome = () => {
+    setView('home');
+    setArticle(null);
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <>
+      <Navbar current={view === 'home' ? 'logbook' : ''} onNav={goHome} />
+      {view === 'home' && (
+        <>
+          <Hero />
+          <Logbook articles={ARTICLES} onOpen={openArticle} />
+          <Footer />
+        </>
+      )}
+      {view === 'article' && article && (
+        <ArticleView article={article} onBack={goHome} />
+      )}
+      <FloatingChrome />
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

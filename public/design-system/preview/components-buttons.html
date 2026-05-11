@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:22px;background:#F8FAFC;font-family:var(--yb-font-sans);color:#0F172A}
+  .wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .btn{font:500 14px var(--yb-font-sans);padding:10px 18px;border-radius:10px;
+       border:1px solid #0F172A;background:#0F172A;color:#fff;cursor:pointer;
+       box-shadow:4px 4px 0 0 rgba(15,23,42,.15)}
+  .btn.sec{background:#fff;color:#0F172A;border-color:#E2E8F0;box-shadow:4px 4px 0 0 rgba(15,23,42,.05)}
+  .btn.ghost{background:transparent;color:#0F172A;border-color:transparent;box-shadow:none}
+  .btn.ghost:hover{color:#06B6D4}
+  .btn.link{background:transparent;border:0;color:#0F172A;padding:4px 0;border-bottom:1px solid transparent;box-shadow:none;border-radius:0}
+  .btn.link:hover{color:#06B6D4;border-bottom-color:#06B6D4}
+  .pill{font:500 12px var(--yb-font-mono);padding:5px 10px;border-radius:999px;
+        border:1px solid #E2E8F0;background:#fff;color:#0F172A;letter-spacing:.02em}
+  .pill.on{background:#ECFEFF;border-color:#06B6D4;color:#0E7490}
+  .lab{font-family:var(--yb-font-mono);font-size:10px;color:#94A3B8;
+       text-transform:uppercase;letter-spacing:.2em;margin:0 0 10px;display:block}
+</style></head><body>
+  <span class="lab">Buttons & pills</span>
+  <div class="wrap">
+    <button class="btn">Read article</button>
+    <button class="btn sec">Subscribe</button>
+    <button class="btn ghost">Ghost</button>
+    <span class="btn link">Read more →</span>
+    <span class="pill on">All</span>
+    <span class="pill">AI</span>
+    <span class="pill">Medicine</span>
+    <span class="pill">BCI</span>
+  </div>
+</body></html>

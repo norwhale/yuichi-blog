@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:0;background:#0A0A0A;font-family:var(--yb-font-sans);color:#F1F5F9;height:360px;position:relative;overflow:hidden}
+  .grid{position:absolute;inset:0;
+        background-image:
+          linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+          linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+        background-size:40px 40px}
+  .spot{position:absolute;width:600px;height:600px;border-radius:999px;
+        background:radial-gradient(circle,rgba(6,182,212,.25) 0%,transparent 60%);
+        top:-200px;left:30%;pointer-events:none;filter:blur(20px)}
+  .overlay{position:absolute;inset:0;background:rgba(10,10,10,.35)}
+  .content{position:relative;padding:60px 40px}
+  .eyebrow{font-family:var(--yb-font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.25em;color:#94A3B8;margin-bottom:18px}
+  .title{font-size:64px;font-weight:800;letter-spacing:-.02em;line-height:1.02;
+         background:linear-gradient(135deg,#06B6D4 0%,#1E3A8A 100%);
+         -webkit-background-clip:text;background-clip:text;color:transparent;max-width:700px}
+  .sub{margin-top:14px;font-size:16px;color:#94A3B8;max-width:520px;line-height:1.6}
+  .lab{position:absolute;right:20px;top:18px;font-family:var(--yb-font-mono);font-size:10px;
+       color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.2em}
+</style></head><body>
+  <div class="grid"></div>
+  <div class="spot"></div>
+  <div class="overlay"></div>
+  <span class="lab">Hero · grid bg · spotlight · gradient title</span>
+  <div class="content">
+    <div class="eyebrow">System Reboot // v2.0</div>
+    <h1 class="title">Reverse Engineering<br>The Human Body.</h1>
+    <p class="sub">Notes from a former engineer studying medicine in Bulgaria — AI, BCI, and the clinical weight of learning.</p>
+  </div>
+</body></html>

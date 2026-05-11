@@ -1,0 +1,286 @@
+/* yuichi.blog — Design System
+   Colors & Type tokens. "Clinical Brutalism meets Technical Elegance."
+   Import this file at the top of any page to get brand defaults. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ─── Surfaces & text (light) ──────────────────────────────── */
+  --yb-bg:          #F8FAFC;   /* slate-50 */
+  --yb-bg-card:     #FFFFFF;
+  --yb-bg-sunken:   #F1F5F9;   /* slate-100 */
+  --yb-fg:          #0F172A;   /* slate-900 */
+  --yb-fg-muted:    #64748B;   /* slate-500 */
+  --yb-fg-subtle:   #94A3B8;   /* slate-400 */
+  --yb-border:      #E2E8F0;   /* slate-200 */
+  --yb-border-subtle:#F1F5F9;
+
+  /* ─── Accents ──────────────────────────────────────────────── */
+  --yb-accent:         #06B6D4;   /* cyan-500 — links, hover, interactive */
+  --yb-accent-deep:    #1E3A8A;   /* blue-900 — gradient endpoints */
+  --yb-accent-soft:    #ECFEFF;   /* cyan-50 — hover bg, chip bg */
+  --yb-accent-ink:     #0E7490;   /* cyan-700 — accessible text on soft */
+
+  /* ─── Subject accents (MedMentor palette) ──────────────────── */
+  --yb-subj-chem:   #22C55E;   /* Chemistry */
+  --yb-subj-bio:    #3B82F6;   /* Biology */
+  --yb-subj-eng:    #EAB308;   /* Medical English */
+  --yb-subj-phys:   #F97316;   /* Physics */
+  --yb-subj-bci:    #A855F7;   /* BCI Foundations */
+
+  /* ─── Status ───────────────────────────────────────────────── */
+  --yb-status-live: #22C55E;   /* pulsing dot */
+
+  /* ─── Dark mode ints (exposed for custom dark sections) ─── */
+  --yb-dark-bg:       #0A0A0A;
+  --yb-dark-bg-elev:  #0F172A;
+  --yb-dark-fg:       #F1F5F9;
+  --yb-dark-border:   rgba(255,255,255,0.08);
+  --yb-dark-glass:    rgba(255,255,255,0.04);
+
+  /* ─── Gradients ───────────────────────────────────────────── */
+  --yb-gradient-hero: linear-gradient(135deg, #06B6D4 0%, #1E3A8A 100%);
+  --yb-gradient-border-glass: linear-gradient(135deg,
+                              rgba(255,255,255,0.6) 0%,
+                              rgba(255,255,255,0.1) 50%,
+                              rgba(255,255,255,0.3) 100%);
+
+  /* ─── Shadows ─────────────────────────────────────────────── */
+  --yb-shadow-rigid:   4px 4px 0 0 rgba(15,23,42,0.05);
+  --yb-shadow-rigid-lg:6px 6px 0 0 rgba(15,23,42,0.08);
+  --yb-shadow-soft:    0 8px 30px -12px rgba(15,23,42,0.12);
+  --yb-shadow-glow:    0 0 40px rgba(6,182,212,0.15);
+
+  /* ─── Radii ────────────────────────────────────────────────── */
+  --yb-radius-sm:  6px;
+  --yb-radius-md:  10px;
+  --yb-radius-lg:  16px;   /* rounded-2xl — default for cards */
+  --yb-radius-xl:  24px;
+  --yb-radius-pill:999px;
+  --yb-radius-sharp:0px;   /* hero image containers — NO radius */
+
+  /* ─── Spacing scale (4-based) ──────────────────────────────── */
+  --yb-space-1:  4px;
+  --yb-space-2:  8px;
+  --yb-space-3:  12px;
+  --yb-space-4:  16px;
+  --yb-space-5:  20px;
+  --yb-space-6:  24px;
+  --yb-space-8:  32px;
+  --yb-space-10: 40px;
+  --yb-space-12: 48px;
+  --yb-space-16: 64px;
+  --yb-space-24: 96px;
+
+  /* ─── Layout widths ────────────────────────────────────────── */
+  --yb-max-home:    1280px;  /* max-w-7xl */
+  --yb-max-article: 768px;   /* max-w-3xl */
+  --yb-navbar-h:    64px;
+
+  /* ─── Motion ───────────────────────────────────────────────── */
+  --yb-ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --yb-ease-in:   cubic-bezier(0.4, 0, 1, 1);
+  --yb-dur-fast:  160ms;
+  --yb-dur-base:  280ms;
+  --yb-dur-slow:  600ms;
+
+  /* ─── Typography ───────────────────────────────────────────── */
+  --yb-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+                  'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic',
+                  'Meiryo', sans-serif;
+  --yb-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo',
+                  'Consolas', monospace;
+
+  /* Type scale (Inter-tuned) */
+  --yb-text-xs:   12px;   /* mono metadata */
+  --yb-text-sm:   14px;
+  --yb-text-base: 16px;
+  --yb-text-lg:   18px;
+  --yb-text-xl:   20px;
+  --yb-text-2xl:  24px;
+  --yb-text-3xl:  30px;
+  --yb-text-4xl:  36px;
+  --yb-text-5xl:  48px;
+  --yb-text-6xl:  60px;
+  --yb-text-7xl:  72px;
+
+  --yb-leading-tight: 1.15;
+  --yb-leading-snug:  1.35;
+  --yb-leading-body:  1.6;
+  --yb-leading-prose: 1.8;   /* article body */
+
+  --yb-tracking-tight:   -0.02em;
+  --yb-tracking-normal:  0em;
+  --yb-tracking-wide:    0.05em;
+  --yb-tracking-widest:  0.2em;   /* uppercase labels */
+
+  /* ─── Grid pattern (hero schematic) ────────────────────────── */
+  --yb-grid-size: 40px;
+  --yb-grid-color-light: rgba(15,23,42,0.04);
+  --yb-grid-color-dark:  rgba(255,255,255,0.04);
+}
+
+/* ─── Semantic element defaults ──────────────────────────────── */
+.yb {
+  font-family: var(--yb-font-sans);
+  color: var(--yb-fg);
+  background: var(--yb-bg);
+  font-size: var(--yb-text-base);
+  line-height: var(--yb-leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv02","cv03","cv04","cv11";
+}
+
+.yb ::selection { background: #FFFFFF; color: var(--yb-accent); }
+
+.yb h1, .yb-h1 {
+  font-family: var(--yb-font-sans);
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, var(--yb-text-7xl));
+  line-height: var(--yb-leading-tight);
+  letter-spacing: var(--yb-tracking-tight);
+  color: var(--yb-fg);
+}
+.yb h2, .yb-h2 {
+  font-weight: 700;
+  font-size: clamp(28px, 3.2vw, var(--yb-text-4xl));
+  line-height: var(--yb-leading-snug);
+  letter-spacing: var(--yb-tracking-tight);
+}
+.yb h3, .yb-h3 {
+  font-weight: 600;
+  font-size: var(--yb-text-2xl);
+  line-height: var(--yb-leading-snug);
+  letter-spacing: -0.01em;
+}
+.yb h4, .yb-h4 {
+  font-weight: 600;
+  font-size: var(--yb-text-lg);
+  line-height: var(--yb-leading-snug);
+}
+
+/* Gradient hero headline */
+.yb-hero-title {
+  background: var(--yb-gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: var(--yb-tracking-tight);
+}
+
+/* Eyebrow / section label */
+.yb-eyebrow {
+  font-family: var(--yb-font-mono);
+  font-size: var(--yb-text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--yb-tracking-widest);
+  color: var(--yb-fg-muted);
+}
+
+/* Monospace metadata: date · 6 min read */
+.yb-meta {
+  font-family: var(--yb-font-mono);
+  font-size: var(--yb-text-xs);
+  color: var(--yb-fg-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Long-form prose */
+.yb-prose {
+  font-size: var(--yb-text-lg);
+  line-height: var(--yb-leading-prose);
+  color: var(--yb-fg);
+  max-width: var(--yb-max-article);
+}
+.yb-prose p + p { margin-top: 1.2em; }
+
+/* Code */
+.yb code, .yb-code {
+  font-family: var(--yb-font-mono);
+  font-size: 0.92em;
+  background: var(--yb-bg-sunken);
+  padding: 2px 6px;
+  border-radius: var(--yb-radius-sm);
+  border: 1px solid var(--yb-border);
+}
+
+/* Links */
+.yb a, .yb-link {
+  color: var(--yb-fg);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--yb-dur-fast) var(--yb-ease),
+              border-color var(--yb-dur-fast) var(--yb-ease);
+}
+.yb a:hover, .yb-link:hover {
+  color: var(--yb-accent);
+  border-bottom-color: var(--yb-accent);
+}
+
+/* Utility: glass card */
+.yb-glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid transparent;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04), rgba(255,255,255,0.04)),
+    var(--yb-gradient-border-glass);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border-radius: var(--yb-radius-lg);
+}
+
+/* Utility: rigid card (light mode card style) */
+.yb-card {
+  background: var(--yb-bg-card);
+  border: 1px solid var(--yb-border);
+  border-radius: var(--yb-radius-lg);
+  box-shadow: var(--yb-shadow-rigid);
+  transition: box-shadow var(--yb-dur-base) var(--yb-ease),
+              transform   var(--yb-dur-base) var(--yb-ease);
+}
+.yb-card:hover {
+  box-shadow: var(--yb-shadow-rigid-lg);
+}
+
+/* Grid background (hero) */
+.yb-grid-bg {
+  background-image:
+    linear-gradient(var(--yb-grid-color-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--yb-grid-color-light) 1px, transparent 1px);
+  background-size: var(--yb-grid-size) var(--yb-grid-size);
+}
+
+/* Live-dot (pulsing) */
+@keyframes yb-pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: .6; transform: scale(.85); }
+}
+.yb-dot-live {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 999px;
+  background: var(--yb-status-live);
+  box-shadow: 0 0 0 0 rgba(34,197,94,.5);
+  animation: yb-pulse 1.8s var(--yb-ease) infinite;
+}
+
+/* Tech-line hover (for cards / list items) */
+.yb-techline {
+  position: relative;
+}
+.yb-techline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--yb-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--yb-dur-base) var(--yb-ease);
+}
+.yb-techline:hover::before { transform: scaleY(1); }

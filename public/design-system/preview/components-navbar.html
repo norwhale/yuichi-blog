@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:0;background:#0F172A;height:120px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-sizing:border-box;font-family:var(--yb-font-sans)}
+  .nav{position:absolute;top:0;left:0;right:0;height:64px;background:rgba(0,0,0,.4);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+  .brand{display:flex;align-items:center;gap:10px;color:#F1F5F9}
+  .logo{width:28px;height:28px;border-radius:4px;background:#fff;color:#0F172A;display:flex;align-items:center;justify-content:center;font-family:var(--yb-font-mono);font-weight:700;font-size:12px}
+  .wordmark{font-family:var(--yb-font-mono);font-size:13px;font-weight:500;letter-spacing:.02em}
+  .links{display:flex;gap:24px}
+  .links a{font-size:13px;color:rgba(241,245,249,.7);text-decoration:none;font-weight:500}
+  .links a.on{color:#06B6D4}
+  .lab{position:absolute;left:20px;bottom:14px;font-family:var(--yb-font-mono);font-size:10px;
+       color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.2em}
+</style></head><body>
+  <span class="lab">Navbar · fixed · h-16 · backdrop-blur-xl</span>
+  <nav class="nav">
+    <div class="brand"><div class="logo">YB</div><span class="wordmark">yuichi.blog</span></div>
+    <div class="links">
+      <a class="on">Logbook</a>
+      <a>About</a>
+      <a>Projects</a>
+      <a>Contact</a>
+    </div>
+  </nav>
+</body></html>

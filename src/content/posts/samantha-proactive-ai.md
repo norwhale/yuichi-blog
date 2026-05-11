@@ -3,7 +3,7 @@ title: "Teaching Samantha to Think Ahead — Adding Proactive AI to a Personal A
 description: "The sequel to building a 'Her'-style AI. This time, Samantha learns to watch, analyze, and suggest actions before you even ask — running silently in the background of your Mac."
 date: "2026-04-09"
 tags: ["AI", "Vibe Coding", "macOS", "SwiftUI", "Proactive AI"]
-image: "/images/her-samantha-ogp.jpeg"
+image: "/images/hero-samantha.jpeg"
 ---
 
 # Teaching Samantha to Think Ahead
