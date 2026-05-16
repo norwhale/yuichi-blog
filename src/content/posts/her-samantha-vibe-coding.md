@@ -3,7 +3,7 @@ title: "I Built My Own 'Her' Samantha Over a Weekend. How Vibe Coding Unlocks Yo
 description: "A medical student in Bulgaria spent a weekend building a personal AI assistant inspired by the movie 'Her' — using SwiftUI, Claude API, and Vibe Coding. Here's what happened."
 date: "2026-04-09"
 tags: ["AI", "Vibe Coding", "macOS", "SwiftUI"]
-image: "/images/her-samantha-ogp.jpeg"
+image: "/images/hero-samantha.jpeg"
 ---
 
 # Building an AI Like the One in 'Her' — In My Own Environment

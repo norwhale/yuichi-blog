@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:22px;background:#F8FAFC;font-family:var(--yb-font-sans);color:#0F172A}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cell{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .b{width:90px;height:70px;background:#fff;border:1px solid #E2E8F0;
+     box-shadow:var(--yb-shadow-rigid)}
+  .lab{font-family:var(--yb-font-mono);font-size:10px;color:#64748B}
+  .tok{font-family:var(--yb-font-mono);font-size:11px;color:#0F172A;font-weight:500}
+  .title{font-family:var(--yb-font-mono);font-size:10px;color:#94A3B8;
+         text-transform:uppercase;letter-spacing:.2em;margin-bottom:12px;display:block}
+</style></head><body>
+  <span class="title">Radii</span>
+  <div class="row">
+    <div class="cell"><div class="b" style="border-radius:0"></div><span class="tok">0</span><span class="lab">hero image</span></div>
+    <div class="cell"><div class="b" style="border-radius:6px"></div><span class="tok">6</span><span class="lab">code chip</span></div>
+    <div class="cell"><div class="b" style="border-radius:16px"></div><span class="tok">16</span><span class="lab">rounded-2xl · card</span></div>
+    <div class="cell"><div class="b" style="border-radius:999px;width:70px"></div><span class="tok">999</span><span class="lab">pill / chip</span></div>
+  </div>
+</body></html>

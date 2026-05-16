@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:20px;background:#F8FAFC;font-family:var(--yb-font-sans)}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .sw{aspect-ratio:1.4;border-radius:10px;border:1px solid var(--yb-border);
+      padding:10px;display:flex;flex-direction:column;justify-content:space-between;
+      box-shadow:var(--yb-shadow-rigid)}
+  .sw .n{font-family:var(--yb-font-mono);font-size:10px;color:#fff;opacity:.95;
+        text-transform:uppercase;letter-spacing:.15em}
+  .sw .h{font-family:var(--yb-font-mono);font-size:10px;color:#fff;opacity:.9;align-self:flex-end}
+  .sw .u{font-family:var(--yb-font-mono);font-size:9px;color:#fff;opacity:.7}
+  .sw.on-light .n,.sw.on-light .h,.sw.on-light .u{color:#0F172A}
+</style></head><body>
+<div class="row">
+  <div class="sw" style="background:#06B6D4"><span class="n">accent</span><span class="u">interactive only</span><span class="h">#06B6D4</span></div>
+  <div class="sw" style="background:#1E3A8A"><span class="n">accent deep</span><span class="u">gradient end</span><span class="h">#1E3A8A</span></div>
+  <div class="sw on-light" style="background:#ECFEFF"><span class="n">accent soft</span><span class="u">hover bg</span><span class="h">#ECFEFF</span></div>
+  <div class="sw" style="background:linear-gradient(135deg,#06B6D4,#1E3A8A)"><span class="n">hero gradient</span><span class="u">135°</span><span class="h">cyan → blue-900</span></div>
+</div>
+</body></html>
